@@ -65,8 +65,33 @@ $superheroes = [
 
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+<?php
+    $hero = $_GET['query'];
+    $alias = "";
+    $name = "";
+    $found = false;
+
+    if ($hero === "" or $hero === null) {
+        echo "<ul>";
+        foreach ($superheroes as $superhero) {
+            echo "<li>{$superhero['alias']}</li>";
+        }
+        echo "</ul>";
+        return;
+    }
+
+    foreach ($superheroes as $superhero) {
+        $name = strripos($superhero['name'], $hero);
+        $alias = strripos($superhero['alias'], $hero);
+        if ($name!==false or $alias!==false) {
+            $found = true;
+            echo "<h3>{$superhero['alias']}</h3>";
+            echo "<h4>{$superhero['name']}</h4>";
+            echo "<p>{$superhero['biography']}</p>";
+        }
+    }
+
+    if (!$found) {
+        echo '<h3 id="not-found">Superhero not found</h3>';
+    }
+?>

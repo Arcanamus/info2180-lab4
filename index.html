@@ -9,9 +9,20 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <h1>Avengers Character Search</h1>
-    <div class="button">
-        <button class="btn">Search</button>
+    <header>
+      <h1>Avengers Character Search</h1>
+    </header>
+    <div class="container">
+      <form action="superhero.php" method="post">
+        <p>Search by Full Name or Alias</p>
+        <div class="form-group">
+          <input type="text" id="searchBox" name="searchBox" placeholder="eg. Scarlett Witch or Wanda Maximoff">
+          <button type="submit" class="button">Search</button>
+        </div>
+      </form>
+      <h2>RESULT</h2>
+      <hr>
+      <div id="result"></div>
     </div>
   </body>
 </html>
